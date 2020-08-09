@@ -3,21 +3,21 @@ import argparse
 
 
 def Check():
-    #     argspec = '''usage: HashChecker.py [-h] -f FILE [-s] [-m] -c CHECKSUM
-    #
-    # optional arguments:
-    #   -h, --help            show this help message and exit
-    #   -f FILE, --file FILE  Select the file to be checked
-    #   -s, --sha256          Check the SHA256 checksum of the file
-    #   -m, --md5             info / public / private
-    #   -c CHECKSUM, --checksum CHECKSUM
-    #                         Enter the MD5 or SHA256 checksum of the file
-    # '''
+    argspec = '''usage: HashChecker.py [-h] -f FILE [-s] [-m] -c CHECKSUM
+    optional arguments:
+      -h, --help            show this help message and exit
+      -f FILE, --file FILE  Select the file to be checked
+      -s, --sha256          Check the SHA256 checksum of the file
+      -m, --md5             info / public / private
+      -c CHECKSUM, --checksum CHECKSUM
+                            Enter the MD5 or SHA256 checksum of the file
+    '''
     path = ""
     checksum = ""
 
     def MD5():
-        nonlocal path, checksum
+        nonlocal path, checksum, argspec
+        argspec = ""
         checksum = checksum.lower()
         # Path is the location of the file (can be set a different way)
         BLOCK_SIZE = 65536  # The size of each read from the file
@@ -37,7 +37,8 @@ def Check():
         # print(file_hash.hexdigest())  # Get the hexadecimal digest of the hash
 
     def SHA256():
-        nonlocal path, checksum
+        nonlocal path, checksum, argspec
+        argspec = ""
         checksum = checksum.lower()
         # Path is the location of the file (can be set a different way)
         BLOCK_SIZE = 65536  # The size of each read from the file
@@ -73,7 +74,16 @@ def Check():
     if (args['sha256'] == True):
         SHA256()
 
-    # print(argspec)
+    print(argspec)
+    argspec = '''usage: HashChecker.py [-h] -f FILE [-s] [-m] -c CHECKSUM
+        optional arguments:
+          -h, --help            show this help message and exit
+          -f FILE, --file FILE  Select the file to be checked
+          -s, --sha256          Check the SHA256 checksum of the file
+          -m, --md5             info / public / private
+          -c CHECKSUM, --checksum CHECKSUM
+                                Enter the MD5 or SHA256 checksum of the file
+        '''
 
 
 Check()
