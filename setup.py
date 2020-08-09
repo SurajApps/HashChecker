@@ -1,7 +1,7 @@
 import setuptools
 
 __project__ = "HashChecker-pkg-SurajApps"
-__version__ = "0.0.1"
+__version__ = "1.0"
 __description__ = "A python module to see if a file has been tampered with, by comparing checksums."
 __packages__ = ["HashChecker"]
 __author__ = "Suraj Apps"
